@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mejorar Calidad de Imágenes</title>
+</head>
+<body>
+    <h1>Sube una imagen para mejorar su calidad</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Mejorar Imagen</button>
+    </form>
+
+    {% if uploaded_image %}
+    <h2>Imagen Original:</h2>
+    <img src="{{ url_for('static', filename='uploads/' + uploaded_image) }}" width="300">
+    
+    <h2>Imagen Mejorada:</h2>
+    <img src="{{ url_for('static', filename='output/' + output_image) }}" width="300">
+    <br>
+    <a href="{{ url_for('download', filename=output_image) }}">Descargar Imagen Mejorada</a>
+    {% endif %}
+</body>
+</html>
