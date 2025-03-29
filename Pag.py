@@ -1,3 +1,4 @@
+
 import os
 import cv2
 import numpy as np
@@ -50,5 +51,7 @@ def index():
 def download(filename):
     return send_file(os.path.join(OUTPUT_FOLDER, filename), as_attachment=True)
 
+# Configuración para Render: Flask debe escuchar en el puerto correcto
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))  # Render asigna un puerto automáticamente
+    app.run(host="0.0.0.0", port=port)
